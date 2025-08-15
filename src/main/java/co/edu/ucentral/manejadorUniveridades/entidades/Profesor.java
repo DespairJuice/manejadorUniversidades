@@ -16,7 +16,7 @@ import lombok.Setter;
 @Entity
 public class Profesor {
     @Id
-    private long cedula;
+    private String cedula;
 
     private String nombre;
     private String correo;
