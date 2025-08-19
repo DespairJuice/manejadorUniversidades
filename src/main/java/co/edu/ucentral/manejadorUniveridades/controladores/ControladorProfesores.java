@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @RestController
@@ -17,6 +19,12 @@ public class ControladorProfesores {
 
     @PostMapping("/")
     public void crear (@RequestBody Profesor profesor) {this.servicioProfesores.CrearProfesor(profesor);}
+    @DeleteMapping ("/{cedula}")
+    public void eliminar (@PathVariable Long cedula) {this.servicioProfesores.BorrarProfesor(cedula);}
+
     @GetMapping("/")
-    public void eliminar (@RequestBody Profesor profesor) {this.servicioProfesores.BorrarProfesor(profesor);}
+    public List<Profesor> consultar(){
+        return this.servicioProfesores.consultarTodos();
+
+    }
 }
